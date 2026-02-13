@@ -12,7 +12,7 @@
  */
 
 console.log("═══════════════════════════════════════");
-console.log("   IF / ELSE IF / ELSE");
+console.log(" IF / ELSE IF / ELSE");
 console.log("═══════════════════════════════════════\n");
 
 
@@ -51,7 +51,7 @@ console.log("\n🤖 AUTOMATION EXAMPLE — Element Visibility\n");
 
 // In real Playwright tests, you'd do:
 // const isVisible = await page.locator(".submit-btn").isVisible();
-const isVisible = true; // Simulating for demo
+const isVisible = false; // Simulating for demo
 
 if (isVisible) {
     // await page.locator(".submit-btn").click();
