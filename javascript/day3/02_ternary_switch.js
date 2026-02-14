@@ -20,8 +20,8 @@ console.log("📌 TERNARY OPERATOR (? :)\n");
 // Syntax: condition ? valueIfTrue : valueIfFalse
 // Shorthand for simple if/else
 
-const age = 20;
-const status = age >= 18 ? "adult" : "minor";
+const age = 12;
+const status = age >= 19 ? "adult" : "minor";
 console.log(`  Age ${age} → ${status}`);
 
 // Equivalent if/else:
@@ -40,7 +40,7 @@ console.log("\n" + "─".repeat(45));
 console.log("\n🤖 TERNARY IN AUTOMATION\n");
 
 // Set timeout based on environment
-const isCI = true;
+const isCI = false;
 const timeout = isCI ? 30000 : 10000;
 console.log(`  Timeout: ${timeout}ms (${isCI ? "CI" : "local"})`);
 
@@ -50,12 +50,12 @@ const menuSelector = isMobile ? ".mobile-menu" : ".desktop-menu";
 console.log(`  Menu selector: ${menuSelector}`);
 
 // Inline in log messages
-const testPassed = true;
-const message = testPassed ? "✅ Order placed" : "❌ Order failed";
+const testPassed = false;
+const message = testPassed ? "Order placed" : "❌ Order failed and payment returned";
 console.log(`  Status: ${message}`);
 
 // Cart display
-const itemCount = 3;
+const itemCount = 10;
 console.log(`  Cart: ${itemCount} ${itemCount === 1 ? "item" : "items"}`);
 
 
@@ -63,7 +63,8 @@ console.log(`  Cart: ${itemCount} ${itemCount === 1 ? "item" : "items"}`);
 // 3. NESTED TERNARY (Use Sparingly!)
 // ═══════════════════════════════════════
 console.log("\n" + "─".repeat(45));
-console.log("\n⚠️ NESTED TERNARY (Use Sparingly!)\n");
+console.log("\n NESTED TERNARY (Use Sparingly!)\n");
+console.log("\n run the code");
 
 const isPremium = false;
 const isMember = true;
@@ -92,7 +93,7 @@ console.log("\n" + "─".repeat(45));
 console.log("\n📌 SWITCH STATEMENT\n");
 
 // Use switch when checking one variable against many exact values
-const browserName = "chromium";
+const browserName = "firefox";
 let launchOptions;
 
 switch (browserName) {

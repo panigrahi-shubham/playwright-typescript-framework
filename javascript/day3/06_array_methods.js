@@ -3,7 +3,7 @@
  * 06 - Array Methods — Functional Looping
  * ============================================
  * 
- * Day 3: Modern JavaScript array methods
+ * Modern JavaScript array methods
  * Often cleaner than traditional loops!
  * 
  * Run: node 06_array_methods.js
@@ -19,7 +19,7 @@ console.log("══════════════════════�
 // ═══════════════════════════════════════
 console.log("📌 forEach — Execute for Each Element\n");
 
-const testCases = ["login", "signup", "checkout", "logout"];
+const testCases = ["login", "signup", "search", "checkout", "logout"];
 
 testCases.forEach((testCase, index) => {
     console.log(`  ${index + 1}. Testing ${testCase}`);
@@ -144,7 +144,7 @@ console.log("\n" + "─".repeat(45));
 console.log("\n📌 reduce — Aggregate Values\n");
 
 // Sum all values
-const orderAmounts = [1200, 3400, 560, 8990];
+const orderAmounts = [1200, 2344, 12200, 3400, 560, 8990];
 const total = orderAmounts.reduce((sum, amount) => sum + amount, 0);
 console.log("  Order amounts:", orderAmounts);
 console.log(`  Total: ₹${total}`);

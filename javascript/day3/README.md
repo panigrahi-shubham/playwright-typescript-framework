@@ -29,7 +29,7 @@ By the end of Day 3, you will:
 | 05 | `05_while_do_while.js` | while, do...while, retry patterns |
 | 06 | `06_array_methods.js` | forEach, map, filter, find, some, every, reduce |
 | 07 | `07_loop_control.js` | break, continue, labeled statements |
-| 08 | `08_practical_patterns.js` | Guard clauses, retry, pagination, batching |
+| 08 | `08_practical_patterns.js` | Validation, categorize, search, reports, retry |
 | 09 | `09_practice_exercises.js` | 5 exercises + 3 debug challenges |
 
 ---
