@@ -224,21 +224,19 @@ const experience = 2;
 const skills = ["Playwright", "JavaScript", "API Testing"];
 
 // ✍️ YOUR CODE BELOW ⬇️
-
-// Create profile object
 const profile = {
     name: firstName,
     role: role,
     experience: experience,
     skills: skills,
     summary: `${firstName} is a ${role} with ${experience} years of experience.`
-};
 
-// Print entire object
+
+
+}
 console.table(profile);
+console.log(`First skill is ${profile.skills[0]}`);
 
-// Print first skill
-console.log("First Skill :", skills[0]);
 
 
 
