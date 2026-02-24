@@ -22,17 +22,17 @@ console.log("══════════════════════�
 console.log("📌 Primitive Type Annotations\n");
 
 // String
-let productName: string = "Cotton Fabric";
+let productName: string = "Cotton candy";
 console.log("  productName:", productName, "→ type:", typeof productName);
 
 // Number — covers int, float, double (JS has only ONE number type)
-let price: number = 250;
-let rating: number = 4.8;
+let price: number = 290;
+let rating: number = 3.8;
 console.log("  price:", price, "→ type:", typeof price);
 console.log("  rating:", rating, "→ type:", typeof rating);
 
 // Boolean
-let isVerified: boolean = true;
+let isVerified: boolean = false;
 console.log("  isVerified:", isVerified, "→ type:", typeof isVerified);
 
 // Null and Undefined
@@ -56,7 +56,7 @@ console.log("\n" + "─".repeat(45));
 console.log("\n📌 Array Types\n");
 
 // Two equivalent syntaxes:
-let prices: number[] = [100, 250, 50];
+let prices: number[] = [100, 25, 50];
 let names: Array<string> = ["Shirt", "Fabric"];  // Generic syntax (like Java's List<String>)
 
 console.log("  prices (number[]):", prices);
@@ -86,8 +86,7 @@ console.log("\n📌 Function Type Annotations\n");
 function calculateBulkPrice(
     price: number,
     quantity: number,
-    discount: number = 0      // default parameter — still typed as number
-): number {                    // return type after the closing parenthesis
+    discount: number = 0): number {
     return price * quantity * (1 - discount);
 }
 
