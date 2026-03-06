@@ -1,10 +1,12 @@
 {
   "name": "playwright-typescript-framework",
   "version": "1.0.0",
-  "description": "🚀 100-day learning journey: TypeScript + Playwright automation framework | Page Object Model | E-commerce testing practice",
+  "description": "Interviewer-ready Playwright + TypeScript automation framework portfolio project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm --prefix playwright test",
+    "test:e2e": "npm --prefix playwright test",
+    "report": "npm --prefix playwright run report"
   },
   "repository": {
     "type": "git",
