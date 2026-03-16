@@ -14,6 +14,7 @@ This repository is my end-to-end test automation learning project, built to demo
 - TypeScript-first test development
 - Playwright test runner setup and cross-browser execution
 - Page Object Model style organization
+- Custom fixtures for reusable page objects
 - Assertions, selectors, and synchronization handling
 - Artifact generation (`playwright-report`, `test-results`) for debugging
 - Progressive learning path (JavaScript fundamentals -> TypeScript -> Playwright usage)
@@ -26,23 +27,28 @@ Foundational JavaScript practice modules (day-wise learning).
 `/typescript`  
 TypeScript concepts and exercises, including compiled output under `dist`.
 
-`/playwright`  
-UI test automation project with Playwright config and test specs.
+`/playwright/src`  
+Portfolio-ready framework code: page objects and custom fixtures.
+
+`/playwright/tests/e2e`  
+Runnable end-to-end tests intended for interview review.
+
+`/playwright/tests/learning-lab`  
+Day-wise Playwright learning exercises kept runnable in a separate suite.
 
 ## How To Evaluate Quickly
 
 From repo root:
 
 ```bash
-cd playwright
-npx playwright test
-npx playwright show-report
+npm test
+npm run report
 ```
 
 ## Current Status
 
-- Framework setup is in place
-- Core test files and config are implemented
+- Framework code is separated from learning exercises
+- Interview-facing tests and learning tests now live in separate folders
 - Continuing to add stronger real-world scenarios and patterns
 
 ## Resume Positioning (Planned)
