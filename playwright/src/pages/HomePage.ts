@@ -8,8 +8,8 @@ export class HomePage extends BasePage {
   readonly navProducts: Locator;
 
   constructor(page: Page) {
-    super(page);
-
+    
+     super(page);
     this.searchBox = page.getByPlaceholder('Search Product');
     this.searchButton = page.locator('#submit_search');
     this.logo = page.getByAltText('Website for automation practice');
