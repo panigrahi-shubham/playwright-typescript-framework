@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 export default defineConfig({
   testDir: './tests',
@@ -10,7 +13,7 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 5000 },
   use: {
-    baseURL: 'https://automationexercise.com',
+    baseURL: process.env.BASE_URL ?? 'https://automationexercise.com',
     trace: 'on-first-retry',
   },
   projects: [

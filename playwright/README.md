@@ -1,36 +1,65 @@
-# Playwright Project
 
-This folder contains the interview-facing automation framework.
+# Playwright TypeScript Automation Framework
 
-## Structure
+End-to-end automation framework for [automationexercise.com](https://automationexercise.com)
+built with Playwright and TypeScript using Page Object Model architecture.
 
-`src/pages`
-Page Object Model classes for reusable browser interactions.
+## Tech Stack
 
-`src/fixtures`
-Custom Playwright fixtures that inject page objects into tests.
+- **Playwright** — browser automation and assertions
+- **TypeScript** — typed test data, interfaces, strict compile-time checks
+- **Page Object Model** — BasePage pattern with reusable page classes
+- **Allure Reports** — detailed test reporting (Day 9)
+- **GitHub Actions** — CI/CD pipeline (Day 10)
 
-`tests/e2e`
-Runnable portfolio tests that demonstrate the framework design.
+## Folder Structure
 
-`tests/learning-lab`
-Day-wise Playwright learning specs that you can still run during practice.
+```
+playwright-typescript-framework/
+├── data/          # Typed test data — IUser, IProduct, ISearchTest
+├── pages/         # Page Object classes — BasePage, HomePage, SearchPage
+├── tests/         # Spec files
+├── types/         # TypeScript interfaces
+├── utils/         # Helper functions and constants
+└── playwright.config.ts
+```
 
-## Run
+## Setup
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/panigrahi-shubham/playwright-typescript-framework
+cd playwright-typescript-framework
+
+# 2. Install dependencies
+npm install
+
+# 3. Install browsers
+npx playwright install
+
+# 4. Create .env file (see .env.example)
+cp .env.example .env
+```
+
+## Running Tests
+
+```bash
+# Run all tests
 npx playwright test
+
+# Run specific file
+npx playwright test day-interfaces.spec.ts
+
+# Run with browser visible
+npx playwright test --headed
+
+# Run only smoke tests
+npx playwright test --grep @smoke
+```
+
+## Reports
+
+```bash
+# Open HTML report
 npx playwright show-report
-```
-
-Run only the interview-facing suite:
-
-```bash
-npx playwright test tests/e2e
-```
-
-Run only the learning suite:
-
-```bash
-npx playwright test tests/learning-lab
 ```
