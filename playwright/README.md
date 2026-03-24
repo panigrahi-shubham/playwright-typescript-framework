@@ -57,6 +57,12 @@ npx playwright test --headed
 npx playwright test --grep @smoke
 ```
 
+Real-account login verification is opt-in. Set valid credentials in `.env` and enable:
+
+```bash
+RUN_AUTH_TESTS=true
+```
+
 ## Reports
 
 ```bash

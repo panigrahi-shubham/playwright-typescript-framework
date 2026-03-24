@@ -8,16 +8,14 @@ export class HomePage extends BasePage {
   readonly navProducts: Locator;
 
   constructor(page: Page) {
-    
-     super(page);
-    this.searchBox = page.getByPlaceholder('Search Product');
+    super(page);
+    this.searchBox = page.locator('#search_product');
     this.searchButton = page.locator('#submit_search');
     this.logo = page.getByAltText('Website for automation practice');
     this.navProducts = page.getByRole('link', { name: 'Products' });
   }
 
   async searchFor(term: string): Promise<void> {
-    await this.navigateTo('/products');
     await this.searchBox.fill(term);
     await this.searchButton.click();
   }

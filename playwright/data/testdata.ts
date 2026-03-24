@@ -9,8 +9,8 @@ import { IUser, IProduct, ISearchTest } from "../types/index";
 // "Check that this object has exactly what IUser requires."
 // If you remove email and try to save — TypeScript shows a red error.
 export const validUser: IUser = {
-  email: "test@testingexercise.com",
-  password: "Test@123",
+  email: process.env.TEST_EMAIL ?? "your_test_email@example.com",
+  password: process.env.TEST_PASSWORD ?? "your_test_password",
   name: "Test User",  // included here for registration tests that need a name
 };
 
