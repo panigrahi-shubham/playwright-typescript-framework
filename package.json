@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npm --prefix playwright test",
     "test:e2e": "npm --prefix playwright test",
-    "report": "npm --prefix playwright run report"
+    "report": "npm --prefix playwright run report",
+    "lint": "eslint playwright/tests/ playwright/src/pages/ --ext .ts",
+    "lint:fix": "eslint playwright/tests/ playwright/src/pages/ --ext .ts --fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,9 @@
   },
   "homepage": "https://github.com/panigrahi-shubham/playwright-typescript-framework#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "eslint": "^10.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

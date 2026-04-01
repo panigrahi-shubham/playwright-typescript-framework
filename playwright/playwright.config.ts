@@ -9,7 +9,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    ['html'],               // Built-in HTML → playwright-report/
+    ['allure-playwright'],  // Allure raw JSON → allure-results/
+  ],
   timeout: 30000,
   expect: { timeout: 5000 },
   use: {
