@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { searchProducts, searchScenarios, validUser } from "../data/testdata";
+import { searchProducts, searchScenarios } from "../data/testdata";
 
 test.describe("Product Search — Data Driven", () => {
   for (const product of searchProducts) {

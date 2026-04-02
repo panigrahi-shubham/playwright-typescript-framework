@@ -15,8 +15,11 @@ Thumbs.db
 # Environment
 .env
 .env.local
+playwright/.env
+playwright/.env.local
 
 # Playwright artifacts
+test-results/
 playwright/test-results/
 playwright/playwright-report/
 playwright/screenshots/

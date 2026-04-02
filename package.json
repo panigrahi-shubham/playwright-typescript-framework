@@ -6,8 +6,13 @@
   "scripts": {
     "test": "npm --prefix playwright test",
     "test:e2e": "npm --prefix playwright test",
+    "test:ci": "npm --prefix playwright run test:ci",
     "report": "npm --prefix playwright run report",
+    "allure:generate": "npm --prefix playwright run allure:generate",
+    "allure:open": "npm --prefix playwright run allure:open",
+    "allure:report": "npm --prefix playwright run allure:report",
     "lint": "eslint playwright/tests/ playwright/src/pages/ --ext .ts",
+    "lint:ci": "eslint playwright/tests/ playwright/src/pages/ --ext .ts --max-warnings=0",
     "lint:fix": "eslint playwright/tests/ playwright/src/pages/ --ext .ts --fix"
   },
   "repository": {

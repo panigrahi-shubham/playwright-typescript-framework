@@ -117,7 +117,7 @@ test.describe('Search — data driven', () => {
 // ─────────────────────────────────────────────────────────────────────────────
 // generateRandomEmail() is called at runtime — different value every test run.
 // This test verifies the helper function itself works correctly.
-test('generated email has correct format', async ({ homePage }) => {
+test('generated email has correct format', async () => {
   allure.owner('Shubham');
   allure.severity('minor');
   allure.story('Test Utilities');
@@ -137,7 +137,7 @@ test('generated email has correct format', async ({ homePage }) => {
 // ─────────────────────────────────────────────────────────────────────────────
 // Verifies URLS and MESSAGES from constants.ts are wired up correctly.
 // These constants are imported across the whole framework — worth a smoke test.
-test('constants have expected values', async ({ homePage }) => {
+test('constants have expected values', async () => {
   allure.owner('Shubham');
   allure.severity('trivial');
   allure.story('Configuration');
