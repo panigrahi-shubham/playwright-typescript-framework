@@ -1,40 +1,34 @@
-import { Page, Locator } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
-// ProductsPage wraps the /products screen.
-// This is where the search feature lives — search box is only on this page.
 export class ProductsPage extends BasePage {
-  // ── LOCATORS ──────────────────────────────────────────────────────────────
-  readonly productCards: Locator;  // each product result card on the page
-  readonly searchInput: Locator;   // the search text input box
-  readonly searchButton: Locator;  // the search submit button
+  readonly searchInput: Locator;
+  readonly searchButton: Locator;
+  readonly searchedProducts: Locator;
+  readonly productCards: Locator;
+  readonly allProductsHeading: Locator;
+  readonly searchedProductsHeading: Locator;
 
   constructor(page: Page) {
-    // super(page) runs BasePage constructor first — stores this.page
     super(page);
-
-    // .productinfo wraps each product card — used to COUNT results
-    this.productCards = page.locator('.productinfo');
-
-    // Placeholder text selector — the search box on /products
-    this.searchInput  = page.getByPlaceholder('Search Product');
-
-    // CSS id for the search submit button
+    this.searchInput = page.locator('#search_product');
     this.searchButton = page.locator('#submit_search');
+    this.searchedProducts = page.locator('.productinfo');
+    this.productCards = page.locator('.features_items .product-image-wrapper');
+    this.allProductsHeading = page.locator('h2:has-text("All Products")');
+    this.searchedProductsHeading = page.locator('h2:has-text("Searched Products")');
   }
 
-  // ── ACTIONS ───────────────────────────────────────────────────────────────
+  async goToProducts(): Promise<void> {
+    await this.navigate('/products');
+  }
 
-  // searchFor() — fills the search box and submits.
-  // After this call: URL changes and results (or empty) are displayed.
   async searchFor(term: string): Promise<void> {
-    await this.searchInput.fill(term);  // type the search term
-    await this.searchButton.click();    // press the search button
+    await this.searchInput.fill(term);
+    await this.searchButton.click();
   }
 
-  // getProductCount() — returns the number of product cards on screen.
-  // Tests use this: expect(count).toBeGreaterThan(0) or expect(count).toBe(0)
   async getProductCount(): Promise<number> {
-    return this.productCards.count();
+    return this.searchedProducts.count();
   }
 }

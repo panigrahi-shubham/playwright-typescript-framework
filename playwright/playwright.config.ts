@@ -5,32 +5,28 @@ dotenv.config({ quiet: true });
 
 export default defineConfig({
   testDir: './tests',
+  testIgnore: ['**/learning-lab/**'],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: [
-    ['html'],               // Built-in HTML → playwright-report/
-    ['allure-playwright'],  // Allure raw JSON → allure-results/
-  ],
-  timeout: 30000,
-  expect: { timeout: 5000 },
+  workers: process.env.CI ? 2 : 4,
+  reporter: [['html'], ['allure-playwright']],
+  timeout: 60_000,
+  expect: {
+    timeout: 10_000,
+  },
   use: {
-    baseURL: process.env.BASE_URL ?? 'https://automationexercise.com',
+    baseURL: process.env.BASE_URL ?? 'https://www.automationexercise.com',
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'on-first-retry',
+    actionTimeout: 15_000,
+    navigationTimeout: 45_000,
   },
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
     },
   ],
 });

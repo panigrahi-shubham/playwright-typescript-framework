@@ -7,12 +7,16 @@ export class BasePage {
     this.page = page;
   }
 
-  async navigateTo(path: string): Promise<void> {
+  async navigate(path = ''): Promise<void> {
     await this.page.goto(path);
   }
 
+  async navigateTo(path: string): Promise<void> {
+    await this.navigate(path);
+  }
+
   async getTitle(): Promise<string> {
-    return await this.page.title();
+    return this.page.title();
   }
 
   async waitForPageLoad(): Promise<void> {
