@@ -1,4 +1,3 @@
-
 # Playwright TypeScript Automation Framework
 
 End-to-end automation framework for [automationexercise.com](https://automationexercise.com)
@@ -6,38 +5,31 @@ built with Playwright and TypeScript using Page Object Model architecture.
 
 ## Tech Stack
 
-- **Playwright** — browser automation and assertions
-- **TypeScript** — typed test data, interfaces, strict compile-time checks
-- **Page Object Model** — BasePage pattern with reusable page classes
-- **Allure Reports** — detailed test reporting (Day 9)
-- **GitHub Actions** — CI/CD pipeline (Day 10)
+- **Playwright** - browser automation and assertions
+- **TypeScript** - typed test data, interfaces, strict compile-time checks
+- **Page Object Model** - BasePage pattern with reusable page classes
+- **Allure Reports** - detailed test reporting
+- **GitHub Actions** - CI/CD pipeline support
 
 ## Folder Structure
 
-```
+```text
 playwright-typescript-framework/
-├── data/          # Typed test data — IUser, IProduct, ISearchTest
-├── pages/         # Page Object classes — BasePage, HomePage, SearchPage
-├── tests/         # Spec files
-├── types/         # TypeScript interfaces
-├── utils/         # Helper functions and constants
-└── playwright.config.ts
+|-- data/          # Typed test data
+|-- pages/         # Page Object classes
+|-- tests/         # Spec files and fixtures
+|-- types/         # TypeScript interfaces
+|-- utils/         # Helper functions and constants
+`-- playwright.config.ts
 ```
 
 ## Setup
 
 ```bash
-# 1. Clone the repo
 git clone https://github.com/panigrahi-shubham/playwright-typescript-framework
 cd playwright-typescript-framework
-
-# 2. Install dependencies
 npm install
-
-# 3. Install browsers
 npx playwright install
-
-# 4. Create .env file (see .env.example)
 cp .env.example .env
 ```
 
@@ -47,14 +39,29 @@ cp .env.example .env
 # Run all tests
 npx playwright test
 
-# Run specific file
-npx playwright test day-interfaces.spec.ts
+# Run end-to-end tests
+npm run test:e2e
+
+# Run smoke tests
+npm run test:smoke
 
 # Run with browser visible
-npx playwright test --headed
+npm run test:headed
 
-# Run only smoke tests
-npx playwright test --grep @smoke
+# Run CI-friendly e2e settings
+npm run test:ci
+```
+
+## Parallelism And Smoke Tags
+
+- `fullyParallel: true` allows independent tests to run concurrently.
+- `workers` falls back to `1` in CI to keep the suite stable on smaller runners.
+- Add `@smoke` to a test title when it belongs in the fast validation path.
+
+```ts
+test('homepage title is correct @smoke', async ({ homePage }) => {
+  await expect(homePage.page).toHaveTitle(/Automation Exercise/);
+});
 ```
 
 Real-account login verification is opt-in. Set valid credentials in `.env` and enable:
@@ -66,6 +73,5 @@ RUN_AUTH_TESTS=true
 ## Reports
 
 ```bash
-# Open HTML report
 npx playwright show-report
 ```

@@ -45,6 +45,17 @@ npm test
 npm run report
 ```
 
+## CI/CD Pipeline
+
+GitHub Actions is configured through [`.github/workflows/playwright-ci.yml`](/C:/Projects/playwright-typescript-framework/.github/workflows/playwright-ci.yml).
+
+- **CI triggers:** on pushes that affect the Playwright framework or workflow files, on pull requests to `main` or `master`, and by manual `workflow_dispatch`
+- **CI steps:** install dependencies, run strict lint with `npm run lint:ci`, install Playwright browsers, and execute the interview-facing E2E suite with `npm run test:ci`
+- **Artifacts:** uploads the Playwright HTML report, raw Allure results, and failure-only `test-results`
+- **CD step:** when a push to `main` or `master` succeeds, the workflow deploys the Playwright HTML report to GitHub Pages
+
+This keeps pull requests protected by automated validation while also publishing the latest successful test report for review.
+
 ## Current Status
 
 - Framework code is separated from learning exercises
