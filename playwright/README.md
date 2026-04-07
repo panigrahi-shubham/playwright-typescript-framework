@@ -50,6 +50,9 @@ npm run test:headed
 
 # Run CI-friendly e2e settings
 npm run test:ci
+
+# Run network interception coverage
+npm run network
 ```
 
 ## Parallelism And Smoke Tags
@@ -69,6 +72,53 @@ Real-account login verification is opt-in. Set valid credentials in `.env` and e
 ```bash
 RUN_AUTH_TESTS=true
 ```
+
+## Auth State
+
+Authenticated coverage uses `global-setup.ts` to log in once and save storage state to `playwright/.auth/user.json`.
+
+Required environment variables:
+
+```bash
+RUN_AUTH_TESTS=true
+TEST_EMAIL=your-registered-email@example.com
+TEST_PASSWORD=your-real-password
+```
+
+Run authenticated tests:
+
+```bash
+# Run authenticated coverage only
+npm run auth
+
+# Run authenticated + network-tagged tests
+npm run network -- --grep @auth
+```
+
+Notes:
+
+- `playwright/.auth/` is gitignored because it contains live session data.
+- If `RUN_AUTH_TESTS` is not `true`, global setup skips login and authenticated specs are skipped.
+- Public login/signup specs stay unauthenticated by design.
+
+## Network Interception
+
+Network interception coverage lives in [tests/network-interception.spec.ts](/C:/Projects/playwright-typescript-framework/playwright/tests/network-interception.spec.ts).
+
+Current live-site behavior on `automationexercise.com` is server-rendered for products/search, so the suite intercepts:
+
+- `/products`
+- `/products?search=...`
+- `/get_product_picture/...`
+
+That gives us working coverage for:
+
+- mocked document responses
+- empty states
+- `500` responses
+- aborted asset requests
+- fetch-and-modify flows
+- request/response verification
 
 ## Reports
 

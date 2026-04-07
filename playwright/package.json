@@ -10,6 +10,7 @@
     "smoke": "playwright test --grep @smoke",
     "regression": "playwright test --grep @regression",
     "auth": "playwright test --grep @auth",
+    "network": "playwright test --grep @network",
     "no-slow": "playwright test --grep-invert @slow",
     "lint": "eslint tests/ src/pages/ --ext .ts",
     "lint:fix": "eslint tests/ src/pages/ --ext .ts --fix",

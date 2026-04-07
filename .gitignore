@@ -23,7 +23,10 @@ test-results/
 playwright/test-results/
 playwright/playwright-report/
 playwright/screenshots/
+playwright/.auth/*
+!playwright/.auth/.gitkeep
 
 # Allure generated artifacts (regenerated every run — never commit)
 playwright/allure-results/
 playwright/allure-report/
+

@@ -2,6 +2,8 @@ import { expect, test } from '@playwright/test';
 import { allure } from 'allure-playwright';
 import { LoginPage } from '../src/pages/LoginPage';
 
+test.use({ storageState: undefined });
+
 test(
   'Login page renders all required fields @smoke @regression @auth',
   { tag: ['@smoke', '@regression', '@auth'] },

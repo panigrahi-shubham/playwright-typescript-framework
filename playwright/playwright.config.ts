@@ -6,6 +6,7 @@ dotenv.config({ quiet: true });
 export default defineConfig({
   testDir: './tests',
   testIgnore: ['**/learning-lab/**'],
+  globalSetup: './global-setup.ts',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
