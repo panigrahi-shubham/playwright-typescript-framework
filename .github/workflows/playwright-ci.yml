@@ -70,6 +70,18 @@ jobs:
         working-directory: playwright
       - run: npx playwright install --with-deps
         working-directory: playwright
+      - name: Health check upstream site
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="${BASE_URL:-https://www.automationexercise.com}"
+          echo "Checking site health: $url"
+          # Failures here are usually external (Cloudflare 525 / 5xx). Skip suite to keep CI signal meaningful.
+          http_code="$(curl -sS -L -o /tmp/site.html -w '%{http_code}' "$url" || true)"
+          if [[ "$http_code" -ge 500 ]] || grep -qE 'Error code 525|SSL handshake failed' /tmp/site.html; then
+            echo "::warning::Upstream site appears unavailable (HTTP=$http_code). Skipping smoke suite."
+            exit 0
+          fi
       - name: Run smoke suite
         run: npm run smoke
         working-directory: playwright
@@ -107,6 +119,17 @@ jobs:
         working-directory: playwright
       - run: npx playwright install --with-deps
         working-directory: playwright
+      - name: Health check upstream site
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="${BASE_URL:-https://www.automationexercise.com}"
+          echo "Checking site health: $url"
+          http_code="$(curl -sS -L -o /tmp/site.html -w '%{http_code}' "$url" || true)"
+          if [[ "$http_code" -ge 500 ]] || grep -qE 'Error code 525|SSL handshake failed' /tmp/site.html; then
+            echo "::warning::Upstream site appears unavailable (HTTP=$http_code). Skipping regression suite."
+            exit 0
+          fi
       - name: Run full regression suite
         run: npm test
         working-directory: playwright
@@ -153,6 +176,17 @@ jobs:
         working-directory: playwright
       - run: npx playwright install --with-deps
         working-directory: playwright
+      - name: Health check upstream site
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="${BASE_URL:-https://www.automationexercise.com}"
+          echo "Checking site health: $url"
+          http_code="$(curl -sS -L -o /tmp/site.html -w '%{http_code}' "$url" || true)"
+          if [[ "$http_code" -ge 500 ]] || grep -qE 'Error code 525|SSL handshake failed' /tmp/site.html; then
+            echo "::warning::Upstream site appears unavailable (HTTP=$http_code). Skipping authenticated suite."
+            exit 0
+          fi
       - name: Run authenticated suite
         run: npm run auth
         working-directory: playwright
