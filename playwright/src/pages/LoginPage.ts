@@ -14,15 +14,15 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.emailInput = page.locator('[data-qa="login-email"]');
-    this.passwordInput = page.locator('[data-qa="login-password"]');
-    this.loginButton = page.locator('[data-qa="login-button"]');
-    this.loginHeading = page.locator('h2:has-text("Login to your account")');
-    this.errorMessage = page.locator('p:has-text("Your email or password is incorrect!")');
-    this.loginEmail = this.emailInput;
-    this.loginPassword = this.passwordInput;
-    this.loginErrorText = this.errorMessage;
-    this.loginFormHeading = this.loginHeading;
+    this.emailInput = page.locator('[data-qa="login-email"]'); // data-qa='login-email': preferred stable test hook over CSS/id changes
+    this.passwordInput = page.locator('[data-qa="login-password"]'); // data-qa='login-password': preferred stable test hook over CSS/id changes
+    this.loginButton = page.locator('[data-qa="login-button"]'); // data-qa='login-button': preferred stable test hook over CSS/id changes
+    this.loginHeading = page.locator('h2:has-text("Login to your account")'); // :has-text('Login to your account'): no data-qa; heading text is stable UX copy
+    this.errorMessage = page.locator('p:has-text("Your email or password is incorrect!")'); // :has-text('Your email or password is incorrect!'): no data-qa; exact error copy is the assertion target
+    this.loginEmail = this.emailInput; // alias: keep ergonomic naming without duplicating locator logic
+    this.loginPassword = this.passwordInput; // alias: keep ergonomic naming without duplicating locator logic
+    this.loginErrorText = this.errorMessage; // alias: keep ergonomic naming without duplicating locator logic
+    this.loginFormHeading = this.loginHeading; // alias: keep ergonomic naming without duplicating locator logic
   }
 
   async goToLogin(): Promise<void> {
