@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures';
-import { allure } from 'allure-playwright';
+import { epic, feature, owner, severity, story } from 'allure-js-commons';
 import { validUser, searchScenarios } from '../../data/testdata';
 import { generateRandomEmail } from '../../utils/helpers';
 import { URLS, MESSAGES } from '../../utils/constants';
@@ -15,11 +15,11 @@ test.describe('Full framework flow', () => {
   test.describe.configure({ mode: 'parallel' });
 
   test('valid login redirects to account page @smoke', async ({ loginPage }) => {
-    allure.owner('Shubham');
-    allure.severity('critical');
-    allure.story('Login flow');
-    allure.feature('Authentication');
-    allure.epic('Core Platform');
+    owner('Shubham');
+    severity('critical');
+    story('Login flow');
+    feature('Authentication');
+    epic('Core Platform');
 
     // Real credentials are optional, so keep local runs deterministic unless explicitly enabled.
     test.skip(
@@ -32,11 +32,11 @@ test.describe('Full framework flow', () => {
   });
 
   test('invalid login shows error message', async ({ loginPage }) => {
-    allure.owner('Shubham');
-    allure.severity('normal');
-    allure.story('Login flow');
-    allure.feature('Authentication');
-    allure.epic('Core Platform');
+    owner('Shubham');
+    severity('normal');
+    story('Login flow');
+    feature('Authentication');
+    epic('Core Platform');
 
     await loginPage.login('nobody@nowhere.com', 'wrongpassword');
     await loginPage.waitForErrorMessage();
@@ -46,11 +46,11 @@ test.describe('Full framework flow', () => {
   test.describe('Search - data driven', () => {
     for (const scenario of searchScenarios) {
       test(`Search: "${scenario.term}"`, async ({ productsPage }) => {
-        allure.owner('Shubham');
-        allure.severity('normal');
-        allure.story('Product Search');
-        allure.feature('Search');
-        allure.epic('Core Platform');
+        owner('Shubham');
+        severity('normal');
+        story('Product Search');
+        feature('Search');
+        epic('Core Platform');
 
         await productsPage.searchFor(scenario.term);
         await expect(productsPage.page).toHaveURL(new RegExp(scenario.expectedInURL));
@@ -67,11 +67,11 @@ test.describe('Full framework flow', () => {
   });
 
   test('generated email has correct format', async () => {
-    allure.owner('Shubham');
-    allure.severity('minor');
-    allure.story('Test Utilities');
-    allure.feature('Helpers');
-    allure.epic('Core Platform');
+    owner('Shubham');
+    severity('minor');
+    story('Test Utilities');
+    feature('Helpers');
+    epic('Core Platform');
 
     const email = generateRandomEmail();
 
@@ -81,11 +81,11 @@ test.describe('Full framework flow', () => {
   });
 
   test('constants have expected values @smoke', async () => {
-    allure.owner('Shubham');
-    allure.severity('trivial');
-    allure.story('Configuration');
-    allure.feature('Constants');
-    allure.epic('Core Platform');
+    owner('Shubham');
+    severity('trivial');
+    story('Configuration');
+    feature('Constants');
+    epic('Core Platform');
 
     expect(URLS.BASE).toBe('https://automationexercise.com');
     expect(URLS.LOGIN).toBe('https://automationexercise.com/login');

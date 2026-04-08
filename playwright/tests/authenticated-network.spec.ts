@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { feature, owner, severity, story } from 'allure-js-commons';
 
 const authEnabled = process.env.RUN_AUTH_TESTS === 'true';
 
@@ -8,10 +8,10 @@ test.describe('Authenticated network flows', () => {
   test.use({ storageState: './.auth/user.json' });
 
   test('Logged-in user can reach cart while a user-detail call is intercepted @auth @network @regression', { tag: ['@auth', '@network', '@regression'] }, async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('normal');
-    allure.story('Auth + Network - Cart Access');
-    allure.feature('Network Interception');
+    owner('Shubham');
+    severity('normal');
+    story('Auth + Network - Cart Access');
+    feature('Network Interception');
 
     await page.route('**/api/getUserDetailByEmail**', async route => {
       const realResponse = await route.fetch();
@@ -30,10 +30,10 @@ test.describe('Authenticated network flows', () => {
   });
 
   test('Logged-in user can search products with stored auth state @auth @network @smoke', { tag: ['@auth', '@network', '@smoke'] }, async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('critical');
-    allure.story('Auth + Network - Product Search');
-    allure.feature('Network Interception');
+    owner('Shubham');
+    severity('critical');
+    story('Auth + Network - Product Search');
+    feature('Network Interception');
 
     const responsePromise = page.waitForResponse(response => response.url().includes('/products?search='));
 

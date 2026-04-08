@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { feature, owner, severity, story } from 'allure-js-commons';
 import { LoginPage } from '../src/pages/LoginPage';
 
 test.use({ storageState: undefined });
@@ -8,10 +8,10 @@ test(
   'Login page renders all required fields @smoke @regression @auth',
   { tag: ['@smoke', '@regression', '@auth'] },
   async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('critical');
-    allure.story('Login - Render');
-    allure.feature('Authentication');
+    owner('Shubham');
+    severity('critical');
+    story('Login - Render');
+    feature('Authentication');
 
     const loginPage = new LoginPage(page);
     await loginPage.goToLogin();
@@ -25,9 +25,9 @@ test(
 );
 
 test('Signup form renders alongside login form @regression @auth', { tag: ['@regression', '@auth'] }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Signup - Render');
+  owner('Shubham');
+  severity('normal');
+  story('Signup - Render');
 
   const loginPage = new LoginPage(page);
   await loginPage.goToLogin();

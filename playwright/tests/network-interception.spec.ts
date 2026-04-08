@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { feature, owner, severity, story } from 'allure-js-commons';
 
 const productsPathPattern = '**/products';
 const searchPathPattern = '**/products?search=*';
@@ -11,11 +11,11 @@ type ProductCard = {
   price: string;
 };
 
-function annotate(story: string, severity: 'minor' | 'normal' | 'critical' = 'normal'): void {
-  allure.owner('Shubham');
-  allure.severity(severity);
-  allure.story(story);
-  allure.feature('Network Interception');
+function annotate(storyName: string, severityLevel: 'minor' | 'normal' | 'critical' = 'normal'): void {
+  owner('Shubham');
+  severity(severityLevel);
+  story(storyName);
+  feature('Network Interception');
 }
 
 function buildProductsHtml(title: string, heading: string, products: ProductCard[], extraSidebarItem?: string): string {

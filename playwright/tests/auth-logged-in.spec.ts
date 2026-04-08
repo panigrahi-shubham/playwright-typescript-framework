@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { feature, owner, severity, story } from 'allure-js-commons';
 
 const authEnabled = process.env.RUN_AUTH_TESTS === 'true';
 
@@ -8,10 +8,10 @@ test.describe('Authenticated flows', () => {
   test.use({ storageState: './.auth/user.json' });
 
   test('Logged-in user sees their name in the navigation bar @auth @smoke', { tag: ['@auth', '@smoke'] }, async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('critical');
-    allure.story('Auth - Logged-In State Verification');
-    allure.feature('Authentication');
+    owner('Shubham');
+    severity('critical');
+    story('Auth - Logged-In State Verification');
+    feature('Authentication');
 
     await page.goto('/');
 
@@ -19,10 +19,10 @@ test.describe('Authenticated flows', () => {
   });
 
   test('Logged-in user can log out successfully @auth @regression', { tag: ['@auth', '@regression'] }, async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('normal');
-    allure.story('Auth - Logout');
-    allure.feature('Authentication');
+    owner('Shubham');
+    severity('normal');
+    story('Auth - Logout');
+    feature('Authentication');
 
     await page.goto('/');
     await page.click('a[href="/logout"]');
@@ -32,10 +32,10 @@ test.describe('Authenticated flows', () => {
   });
 
   test('Logged-in user can add a product to cart from products page @auth @regression', { tag: ['@auth', '@regression'] }, async ({ page }) => {
-    allure.owner('Shubham');
-    allure.severity('normal');
-    allure.story('Auth - Add To Cart');
-    allure.feature('Authentication');
+    owner('Shubham');
+    severity('normal');
+    story('Auth - Add To Cart');
+    feature('Authentication');
 
     await page.goto('/products');
 

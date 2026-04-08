@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { owner, severity, story } from 'allure-js-commons';
 import { HomePage } from '../src/pages/HomePage';
 import { LoginPage } from '../src/pages/LoginPage';
 import { ProductsPage } from '../src/pages/ProductsPage';
 
 test('Search for nonexistent product shows zero results @regression', { tag: '@regression' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Search - Negative');
+  owner('Shubham');
+  severity('normal');
+  story('Search - Negative');
 
   const productsPage = new ProductsPage(page);
   await productsPage.goToProducts();
@@ -20,9 +20,9 @@ test('Search for nonexistent product shows zero results @regression', { tag: '@r
 });
 
 test('Login with invalid credentials shows error message @regression', { tag: '@regression' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Login - Negative');
+  owner('Shubham');
+  severity('normal');
+  story('Login - Negative');
 
   const loginPage = new LoginPage(page);
   await loginPage.goToLogin();
@@ -33,9 +33,9 @@ test('Login with invalid credentials shows error message @regression', { tag: '@
 });
 
 test('Login with empty fields does not submit successfully @regression', { tag: '@regression' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('minor');
-  allure.story('Login - Empty Fields');
+  owner('Shubham');
+  severity('minor');
+  story('Login - Empty Fields');
 
   const loginPage = new LoginPage(page);
   await loginPage.goToLogin();
@@ -46,9 +46,9 @@ test('Login with empty fields does not submit successfully @regression', { tag: 
 });
 
 test('Cart page is accessible from home navigation @regression', { tag: '@regression' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Cart Navigation');
+  owner('Shubham');
+  severity('normal');
+  story('Cart Navigation');
 
   const home = new HomePage(page);
   await home.goToHome();
@@ -59,9 +59,9 @@ test('Cart page is accessible from home navigation @regression', { tag: '@regres
 });
 
 test('Subscription with empty email shows validation @regression', { tag: '@regression' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('minor');
-  allure.story('Subscription - Negative');
+  owner('Shubham');
+  severity('minor');
+  story('Subscription - Negative');
 
   const home = new HomePage(page);
   await home.goToHome();

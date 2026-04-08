@@ -38,9 +38,18 @@ async function globalSetup(config: FullConfig): Promise<void> {
     await page.fill('[data-qa="login-password"]', password);
     await page.click('[data-qa="login-button"]');
 
-    await page.waitForURL(/automationexercise\.com\/?$/, { timeout: 30_000 });
     await page.waitForLoadState('domcontentloaded');
-    await page.waitForSelector('li a:has-text(" Logged in as"), a[href="/delete_account"]', { timeout: 30_000 });
+
+    const loggedInIndicator = page.locator('li a:has-text(" Logged in as"), a[href="/delete_account"]');
+    const loginError = page.locator('p:has-text("Your email or password is incorrect")');
+
+    await Promise.race([
+      loggedInIndicator.waitFor({ state: 'visible', timeout: 30_000 }),
+      loginError.waitFor({ state: 'visible', timeout: 30_000 }).then(() => {
+        throw new Error('Global setup: login failed (site reported incorrect email/password).');
+      }),
+    ]);
+
     await context.storageState({ path: authFile });
 
     console.log(`Global setup: storageState saved to ${authFile}`);

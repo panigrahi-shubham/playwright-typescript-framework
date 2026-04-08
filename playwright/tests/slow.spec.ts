@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { owner, severity, story } from 'allure-js-commons';
 import { ProductsPage } from '../src/pages/ProductsPage';
 
 test('All product categories are browsable @slow', { tag: '@slow' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Product Catalogue - Full Browse');
+  owner('Shubham');
+  severity('normal');
+  story('Product Catalogue - Full Browse');
 
   const productsPage = new ProductsPage(page);
   await productsPage.goToProducts();
@@ -19,9 +19,9 @@ test('All product categories are browsable @slow', { tag: '@slow' }, async ({ pa
 });
 
 test('Search works for multiple fashion categories @slow', { tag: '@slow' }, async ({ page }) => {
-  allure.owner('Shubham');
-  allure.severity('normal');
-  allure.story('Search - Multiple Terms');
+  owner('Shubham');
+  severity('normal');
+  story('Search - Multiple Terms');
 
   const productsPage = new ProductsPage(page);
   const searchTerms = ['top', 'tshirt', 'jean', 'saree'];
